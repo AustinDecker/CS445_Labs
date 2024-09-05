@@ -1,19 +1,20 @@
-//Pre processor directives
 #include <stdio.h>
 #include <stdlib.h>
 
-
-//display sys env variables
-void display_env(){
-	const char * command = "printenv";
-	printf("===\tSystem Environment Variables\t===\n");
-	
-	//Too lazy to use getenv, this gets all environment variables.
-	system(command);
-	
+int main(int argc, char * argv[], char * envp[])
+{
+const char * env_var_name = "SHELL";
+char * shell;
+int i = 0;
+while (envp[i] != NULL) {
+printf("%s\n", envp[i++]);
 }
-
-int main(){
-	display_env();
-	return 0;
+shell = (char *)getenv(env_var_name);
+if (shell) {
+printf("%s's value: %s\n", env_var_name, shell);
+printf("%s's address: %p\n", env_var_name, shell);
+}
+else {
+printf("Value is not found for %s\n", env_var_name);
+}
 }
