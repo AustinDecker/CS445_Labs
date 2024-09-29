@@ -1,4 +1,4 @@
-FLAGS    = -z execstack -fno-stack-protector
+FLAGS    = 
 FLAGS_32 = -m32
 TARGET   = stack-L1 stack-L2 stack-L3 stack-L4 stack-L1-dbg stack-L2-dbg stack-L3-dbg stack-L4-dbg
 
