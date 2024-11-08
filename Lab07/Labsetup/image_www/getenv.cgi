@@ -1,4 +1,4 @@
-#!/bin/bash_shellshock
+#!/bin/bash
 
 echo "Content-type: text/plain"
 echo
