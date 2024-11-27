@@ -59,8 +59,8 @@ struct pseudo_tcp
         char payload[1500];
 };
 
-//#define DEST_IP    "10.9.0.5"
-//#define DEST_PORT  23  // Attack the web server
+//#define DEST_IP "10.9.0.5"
+//#define DEST_PORT 23
 #define PACKET_LEN 1500
 
 unsigned short calculate_tcp_checksum(struct ipheader *ip);
