@@ -1,23 +1,11 @@
 #!/usr/bin/python3
+from sys import argv
 
-# XOR two bytearrays
-def xor(first, second):
-   return bytearray(x^y for x,y in zip(first, second))
-
-MSG   = "A message"
-HEX_1 = "aabbccddeeff1122334455"
-HEX_2 = "1122334455778800aabbdd"
-
-# Convert ascii string to bytearray
-D1 = bytes(MSG, 'utf-8')
-
-# Convert hex string to bytearray
-D2 = bytearray.fromhex(HEX_1)
-D3 = bytearray.fromhex(HEX_2)
-
-r1 = xor(D1, D2)
-r2 = xor(D2, D3)
-r3 = xor(D2, D2)
-print(r1.hex())
-print(r2.hex())
-print(r3.hex())
+_, first, second, third = argv
+p1 = bytearray(first, encoding='utf-8')
+padding = 16 - len(p1) % 16  # padding to match the block size as 128 bit
+p1.extend([padding] * padding)
+IV = bytearray.fromhex(second)
+IV_NEXT = bytearray.fromhex(third)
+p2 = bytearray(x ^ y ^ z for x, y, z in zip(p1, IV, IV_NEXT))
+print(p2.hex())  # Output as a hex string
